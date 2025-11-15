@@ -5,4 +5,4 @@
 layout: home
 ---
 
-# SentinelIS Documentation
+This is the official SentinelIS Documentation
