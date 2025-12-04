@@ -24,9 +24,11 @@ git clone https://github.com/SentinelIS/SentinelIS-Core.git
 ## Setup Guide
 
 ### Step 1: Ports
+
 Before starting the setup, please make sure that all required ports are free and not being used by any other software. You can change the ports for your local installation if needed. However, if you plan to contribute to this project, changing the ports is not allowed.
 
 ### Step 2: Create .env files
+
 For all the different databases and services, you will need to set up a ```.env``` file containing all your keys and credentials. Please make sure to follow **exactly** this format:
 
 ```yaml
