@@ -13,10 +13,10 @@ sidebar:
 
 Download the entire project folder from the GitHub repository and open it in your code editor if you want to use it as-is. If you’d like to customize the software to suit your needs, feel free to fork the repository. For general improvements, you can clone the repo and submit a pull request.
 
-#### Github
+**Github**
 [SentinelIS Information Security Management System](https://github.com/SentinelIS/SentinelIS-Core)
 
-#### Clone
+**Clone** 
 ``` bash
 git clone https://github.com/SentinelIS/SentinelIS-Core.git
 ```
@@ -27,9 +27,24 @@ git clone https://github.com/SentinelIS/SentinelIS-Core.git
 
 Before starting the setup, please make sure that all required ports are free and not being used by any other software. You can change the ports for your local installation if needed. However, if you plan to contribute to this project, changing the ports is not allowed.
 
+**Show All Used Ports**
+```powershell
+netstat -aon | Sort-Object
+```
+
+By default, the entire project runs on `localhost`. You can change this if needed. The default ports are:
+
+- `3000`: Express server for login and setup
+- `4000`: Apollo server for GraphQL
+- `3307:3306`: MySQL database
+- `27018:27017`: MongoDB database
+- `8081:8080`: SQLite database
+
+For further Information about the databases see: Database Design
+
 ### Step 2: Create .env files
 
-For all the different databases and services, you will need to set up a ```.env``` file containing all your keys and credentials. Please make sure to follow **exactly** this format:
+For all the different databases and services, you will need to set up a `.env` file containing all your keys and credentials. Please make sure to follow **exactly** this format:
 
 ```yaml
 MYSQL_HOST=localhost
@@ -48,4 +63,4 @@ SQLITE_DB_PATH=/sqlite/data/mydb.sqlite
 SQLITE_GUI_PORT=8081
 ```
 
-For all database connections, Python test scripts are available. You can use these scripts to avoid testing the connections manually. If you choose not to use the Python scripts, you can safely delete the testing/ directory in the backend folder.
+For all database connections, Python test scripts are available. You can use these scripts to avoid testing the connections manually. If you choose not to use the Python scripts, you can safely delete the `testing/` directory in the `backend` folder.
