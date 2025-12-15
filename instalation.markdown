@@ -39,6 +39,8 @@ By default, the entire project runs on `localhost`. You can change this if neede
 - `5137`: .NET Server for chatsystem
 - `3307:3306`: MySQL database
 - `27018:27017`: MongoDB database
+- `6379:6379`: Redis database
+- `5540:5540`: Redis Web GUI
 - `8081:8080`: SQLite database
 
 For further Information about the databases see: Database Design
@@ -63,10 +65,12 @@ MONGO_CONNECTION_STRING= ..
 SQLITE_DB_PATH=/sqlite/data/mydb.sqlite
 SQLITE_GUI_PORT=8081
 
+REDIS_PASSWORD= ..
+
 JWT_SECRET= ..
 ```
 
-**Important:** Make sure that `JWT_-_SECRET` is at least 16 characters long, better 32!
+**Important:** Make sure that `JWT_SECRET` is at least 16 characters long, better 32!
 
 Please make sure that the following directories contain a `.env` file:
 
