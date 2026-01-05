@@ -43,7 +43,11 @@ By default, the entire project runs on `localhost`. You can change this if neede
 - `5540:5540`: Redis Web GUI
 - `8081:8080`: SQLite database
 
-For further Information about the databases see: Database Design
+For further Information about the databases see: Database Design.
+
+The SQLite Web GUI can be accessed through this URL: [SQLite Web GUI](http://localhost:8081/).
+
+The Redis Web GUI can be accessed through this URL: [Redis Web GUI](http://localhost:5540).
 
 ### Step 2: Create .env files
 
