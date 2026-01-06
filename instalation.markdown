@@ -36,6 +36,7 @@ By default, the entire project runs on `localhost`. You can change this if neede
 
 - `3000`: Express server for login and setup
 - `4000`: Apollo server for GraphQL
+- `5000`: Express server for core features
 - `5137`: .NET Server for chatsystem
 - `3307:3306`: MySQL database
 - `27018:27017`: MongoDB database
