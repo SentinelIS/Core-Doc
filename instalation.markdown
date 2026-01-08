@@ -23,6 +23,8 @@ git clone https://github.com/SentinelIS/SentinelIS-Core.git
 
 ## Setup Guide
 
+> Note: The setup may take up to 45 minutes, but it is well worth the time.
+
 ### Step 1: Ports
 
 Before starting the setup, please make sure that all required ports are free and not being used by any other software. You can change the ports for your local installation if needed. However, if you plan to contribute to this project, changing the ports is not allowed.
@@ -85,10 +87,87 @@ Please make sure that the following directories contain a `.env` file:
 
 - `SentinelIS-Core/docker`: This directory must contain the main `.env` file. If it is missing, the entire application will not work.
 - `SentinelIS-Core/backend/main/node`: The server files require a `.env` file unless you plan to use fallback defaults or hardcode the values. Both of which are not recommended.
-- `SentinelIS-Core/backend/main/node`: The server file requires a `.env` file. If missing the micro service will not work.
+- `SentinelIS-Core/backend/main/python`: The server file requires a `.env` file. If missing the micro service will not work.
 - `SentinelIS-Core/backend/LiveChatApp`: The server expects a `.env` file for the JWT Token and for the database connections.
 - `SentienlIS-Core/backend/main/testing`: The Python test scripts also expect a `.env` file to be present.
 
 You can use system-wide environment variables instead of separate `.env` files, but this would require modifying all connection configurations accordingly.
 
 For all database connections, Python test scripts are available. You can use these scripts to avoid testing the connections manually. If you choose not to use the Python scripts, you can safely delete the `testing/` directory in the `backend` folder.
+
+### Step 3: Install dependencies
+
+To run the application successfully, make sure the following tools are installed on your system and added to your `PATH`:
+
+- Docker
+- Node.js
+- Python
+- .NET Framework
+- npm
+- pip
+
+The following tools are optional, but recommended for easier database management:
+
+- MySQL Workbench
+- MongoDB Compass
+
+Or any other database GUI tool of your choice.
+
+**node_modules:**
+
+The `node_modules` required for Electron and all Node.js backend microservices can be installed using:
+
+```bash
+npm install
+```
+
+**python**
+
+> Important: Use Python 3.12. Newer versions may cause issues with Pillow or prevent it from working entirely.
+
+Follow these steps carefully to install Python 3.12, create a virtual environment, and install the required dependencies:
+
+```python
+# Check installed Python versions
+py -0
+
+# If Python 3.12 is not installed
+winget install Python.Python.3.12
+
+# Create a new virtual environment
+python3.12 -m venv venv
+
+# Activate the environment (output should look like this)
+# venv\Scripts\activate
+
+# Install dependencies
+pip install -r backend/main/python/requirements.txt
+```
+
+**.NET**
+
+To install the dependencies defined in the LiveChatApp.csproj file, follow these steps:
+
+```bash
+# Navigate to the project directory
+cd backend/LiveChatApp
+
+# Restore all dependencies 
+dotnet restore
+```
+
+### Step 4: Run SQL Statements
+
+1. **Create the COMPANY table**
+
+      Start by running the `CREATE TABLE COMPANY` statement from the `database/company.sql` file.
+
+2. **Create the USERS table**
+
+      Next, run the `CREATE TABLE USERS` statement from the `database/users.sql` file.
+
+3. **Add the foreign key to COMPANY**
+
+      Once the `USERS` table has been created successfully, run the two `ALTER TABLE` statements from `database/company.sql`. These will add the `COMP_OWNER_ID` column and a `FOREIGN KEY` referencing the `USERS` table.
+
+After executing all SQL statements, you may safely delete the database folder if you wish.
